@@ -147,16 +147,6 @@
 
 
 
-#pragma mark- 震动、声音效果
-/**
- @brief  识别成功震动提醒
- */
-+ (void)systemVibrate;
-
-/**
- @brief  扫码成功声音提醒
- */
-+ (void)systemSound;
 
 
 #pragma mark -相机、相册权限

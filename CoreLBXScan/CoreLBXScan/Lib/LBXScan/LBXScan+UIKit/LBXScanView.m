@@ -212,12 +212,7 @@
     CGFloat YMaxRetangle = YMinRetangle + sizeRetangle.height;
     CGFloat XRetangleRight = self.frame.size.width - XRetangleLeft;
     
-    
-    
-    NSLog(@"frame:%@",NSStringFromCGRect(self.frame));
-    
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
     
     //非扫码区域半透明
     {
@@ -226,11 +221,9 @@
                                  _viewStyle.blue_notRecoginitonArea, _viewStyle.alpa_notRecoginitonArea);
         
         //填充矩形
-        
         //扫码区域上面填充
         CGRect rect = CGRectMake(0, 0, self.frame.size.width, YMinRetangle);
         CGContextFillRect(context, rect);
-        
         
         //扫码区域左边填充
         rect = CGRectMake(0, YMinRetangle, XRetangleLeft,sizeRetangle.height);

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A4310" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanResultViewController">
+            <connections>
+                <outlet property="qrImgV" destination="93P-45-ezR" id="XHe-Z5-ZsP"/>
+                <outlet property="qrLabel" destination="fMI-zB-610" id="3r3-q7-i4b"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gge-0T-kce">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="93P-45-ezR">
+                            <rect key="frame" x="60" y="120" width="480" height="480"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="93P-45-ezR" secondAttribute="height" id="FP0-kT-qQ6"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-zB-610">
+                            <rect key="frame" x="32" y="521" width="536" height="29"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="fMI-zB-610" secondAttribute="trailing" constant="32" id="9uE-AQ-fFG"/>
+                        <constraint firstItem="fMI-zB-610" firstAttribute="leading" secondItem="gge-0T-kce" secondAttribute="leading" constant="32" id="ULb-u9-5P1"/>
+                        <constraint firstItem="93P-45-ezR" firstAttribute="centerX" secondItem="gge-0T-kce" secondAttribute="centerX" id="Zsn-Lp-WG4"/>
+                        <constraint firstAttribute="bottom" secondItem="fMI-zB-610" secondAttribute="bottom" constant="50" id="gp7-2g-uI8"/>
+                        <constraint firstItem="93P-45-ezR" firstAttribute="top" secondItem="gge-0T-kce" secondAttribute="top" constant="120" id="ihB-dT-5wx"/>
+                        <constraint firstItem="93P-45-ezR" firstAttribute="width" secondItem="gge-0T-kce" secondAttribute="width" multiplier="0.8" id="nsn-aQ-osC"/>
+                        <constraint firstItem="fMI-zB-610" firstAttribute="centerX" secondItem="gge-0T-kce" secondAttribute="centerX" id="t2o-2t-ExX"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="t2o-2t-ExX"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="gge-0T-kce" secondAttribute="trailing" id="PfV-qu-LSx"/>
+                <constraint firstItem="gge-0T-kce" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YIM-yc-Dgh"/>
+                <constraint firstAttribute="bottom" secondItem="gge-0T-kce" secondAttribute="bottom" id="YpX-r3-MSI"/>
+                <constraint firstItem="gge-0T-kce" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="z6a-cC-grr"/>
+            </constraints>
+            <point key="canvasLocation" x="236" y="427"/>
+        </view>
+    </objects>
+</document>
