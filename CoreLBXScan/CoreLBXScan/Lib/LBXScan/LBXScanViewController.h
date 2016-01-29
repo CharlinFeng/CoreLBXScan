@@ -81,8 +81,6 @@
 //我的二维码
 @property (nonatomic, strong) UIButton *btnMyQR;
 
-
-
 //启动设备
 - (void)startScan;
 

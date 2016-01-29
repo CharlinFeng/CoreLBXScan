@@ -30,7 +30,7 @@
         
         self.anmiationStyle = LBXScanViewAnimationStyle_LineMove;
         self.photoframeAngleStyle = LBXScanViewPhotoframeAngleStyle_Outer;
-        self.colorAngle = [UIColor colorWithRed:0. green:167./255. blue:231./255. alpha:1.0];
+        self.colorAngle = [UIColor colorWithRed:217./255. green:183./255. blue:101./255. alpha:1.0];
         
         self.red_notRecoginitonArea = 0.0;
         self.green_notRecoginitonArea = 0.0;

@@ -8,6 +8,8 @@
 
 #import "LBXScanViewController.h"
 #import "ScanResultViewController.h"
+//#import "CoreIV.h"
+
 
 @interface LBXScanViewController ()
 
@@ -20,6 +22,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.title = @"二维码扫描";
+    
+//    [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+    [self scanPrepare];
+
+}
+
+
+
+
+-(void)scanPrepare{
+    
     // Do any additional setup after loading the view.
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
@@ -40,25 +71,17 @@
         _topTitle.hidden = YES;
     }
     
-    self.title = @"二维码扫描";
-}
-
-
-
-
--(void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    
     [self startScan];
     
+//    [CoreIV dismissFromView:self.view animated:true];
 }
-
 
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+//    [CoreIV dismissFromView:self.view animated:NO];
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
@@ -79,6 +102,9 @@
         self.qRScanView = [[LBXScanView alloc]initWithFrame:rect style:_style];
         [self.view addSubview:_qRScanView];
         
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_qRScanView startScanAnimation];
+        });
     
         
         self.topTitle = [[UILabel alloc]init];
@@ -207,7 +233,7 @@
     [_qRScanView stopDeviceReadying];
     
     [_qRScanView startScanAnimation];
-    
+
     self.view.backgroundColor = [UIColor clearColor];
 }
 
@@ -312,8 +338,12 @@
 
 - (void)myQRCode
 {
-    ScanResultViewController *rc = [ScanResultViewController scanResultWithQRCode:@"成都时点软件 \r ios-android.cn"];
+
     
+    NSString *qrCode = @"http://weixin.qq.com/r/DkOosGbE9DuLrSLT9xYc";
+    
+    ScanResultViewController *rc = [ScanResultViewController scanResultWithQRCode:qrCode];
+    rc.isMyCode = YES;
     [self.navigationController pushViewController:rc animated:YES];
 }
 
@@ -338,7 +368,6 @@
     
     UIView *frontView = [[window subviews] objectAtIndex:0];
     id nextResponder = [frontView nextResponder];
-    
     
     if ([nextResponder isKindOfClass:[UIViewController class]])
         result = nextResponder;

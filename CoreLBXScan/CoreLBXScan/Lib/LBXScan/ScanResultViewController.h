@@ -10,6 +10,8 @@
 
 @interface ScanResultViewController : UIViewController
 
+@property (nonatomic,assign) BOOL isMyCode;
+
 +(instancetype)scanResultWithQRCode:(NSString *)qrCode;
 
 @end

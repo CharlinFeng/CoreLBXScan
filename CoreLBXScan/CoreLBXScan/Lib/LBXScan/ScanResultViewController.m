@@ -17,6 +17,11 @@
 
 @property (nonatomic,copy) NSString *qrCode;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topMC;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelBC;
+
+
+
 @end
 
 @implementation ScanResultViewController
@@ -34,15 +39,22 @@
     
     [super viewDidLoad];
 
-    self.title = @"扫描结果";
+    self.title = self.isMyCode ? @"万晟城" : @"扫描结果";
     
     CGFloat wh = [UIScreen mainScreen].bounds.size.width;
     
     CGSize size = CGSizeMake(wh, wh);
-    
+ 
     self.qrImgV.image = [LBXScanWrapper createQRWithString:self.qrCode size:size];
     
-    self.qrLabel.text = self.qrCode;
+    self.qrLabel.text = self.isMyCode ? @"关注万晟城官方微信" : self.qrCode;
+    NSLog(@"%@",self.qrCode);
+    
+    if ([UIScreen mainScreen].bounds.size.height == 480){
+    
+        self.topMC.constant = 60;
+        self.labelBC.constant = 30;
+    }
 }
 
 

@@ -75,9 +75,8 @@
 
 - (void)startAnimatingWithRect:(CGRect)animationRect InView:(UIView *)parentView Image:(UIImage*)image
 {
-    if (isAnimationing) {
-        return;
-    }
+
+    [self stopAnimating];
     
     isAnimationing = YES;
 

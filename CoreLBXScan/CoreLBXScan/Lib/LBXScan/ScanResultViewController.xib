@@ -9,8 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanResultViewController">
             <connections>
+                <outlet property="labelBC" destination="gp7-2g-uI8" id="MAi-hM-iyS"/>
                 <outlet property="qrImgV" destination="93P-45-ezR" id="XHe-Z5-ZsP"/>
                 <outlet property="qrLabel" destination="fMI-zB-610" id="3r3-q7-i4b"/>
+                <outlet property="topMC" destination="ihB-dT-5wx" id="YdJ-ps-272"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,8 +30,8 @@
                                 <constraint firstAttribute="width" secondItem="93P-45-ezR" secondAttribute="height" id="FP0-kT-qQ6"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-zB-610">
-                            <rect key="frame" x="32" y="521" width="536" height="29"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-zB-610">
+                            <rect key="frame" x="32" y="550" width="536" height="0.0"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -43,13 +45,7 @@
                         <constraint firstAttribute="bottom" secondItem="fMI-zB-610" secondAttribute="bottom" constant="50" id="gp7-2g-uI8"/>
                         <constraint firstItem="93P-45-ezR" firstAttribute="top" secondItem="gge-0T-kce" secondAttribute="top" constant="120" id="ihB-dT-5wx"/>
                         <constraint firstItem="93P-45-ezR" firstAttribute="width" secondItem="gge-0T-kce" secondAttribute="width" multiplier="0.8" id="nsn-aQ-osC"/>
-                        <constraint firstItem="fMI-zB-610" firstAttribute="centerX" secondItem="gge-0T-kce" secondAttribute="centerX" id="t2o-2t-ExX"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="t2o-2t-ExX"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -59,7 +55,7 @@
                 <constraint firstAttribute="bottom" secondItem="gge-0T-kce" secondAttribute="bottom" id="YpX-r3-MSI"/>
                 <constraint firstItem="gge-0T-kce" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="z6a-cC-grr"/>
             </constraints>
-            <point key="canvasLocation" x="236" y="427"/>
+            <point key="canvasLocation" x="488" y="491"/>
         </view>
     </objects>
 </document>

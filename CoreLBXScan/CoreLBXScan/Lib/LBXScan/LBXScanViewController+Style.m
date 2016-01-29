@@ -135,7 +135,6 @@
     
     style.anmiationStyle = LBXScanViewAnimationStyle_NetGrid;
     
-    
     //矩形框离左边缘及右边缘的距离
     style.xScanRetangleOffset = 80;
     
@@ -143,7 +142,6 @@
     UIImage *imgPartNet = [UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_part_net"];
     
     style.animationImage = imgPartNet;
-    
     
     LBXScanViewController *vc = [LBXScanViewController new];
     vc.style = style;
@@ -183,6 +181,7 @@
 
 #pragma mark -自定义4个角及矩形框颜色
 + (instancetype)changeColor{
+    
     //设置扫码区域参数
     LBXScanViewStyle *style = [[LBXScanViewStyle alloc]init];
     style.centerUpOffset = 44;
@@ -223,7 +222,6 @@
     style.centerUpOffset = 60;
     //矩形框离左边缘及右边缘的距离
     style.xScanRetangleOffset = 100;
-    
     
     style.photoframeAngleStyle = LBXScanViewPhotoframeAngleStyle_On;
     style.photoframeLineW = 6;
