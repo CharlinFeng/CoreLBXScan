@@ -9,7 +9,8 @@
 #import "LBXScanViewController.h"
 #import "ScanResultViewController.h"
 //#import "CoreIV.h"
-
+//#import "CoreSVP.h"
+//#import "CoreNavVC.h"
 
 @interface LBXScanViewController ()
 
@@ -22,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"二维码扫描";
@@ -42,8 +43,13 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
+    
     [self scanPrepare];
-
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_qRScanView startScanAnimation];
+    });
 }
 
 
@@ -102,10 +108,7 @@
         self.qRScanView = [[LBXScanView alloc]initWithFrame:rect style:_style];
         [self.view addSubview:_qRScanView];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [_qRScanView startScanAnimation];
-        });
-    
+        
         
         self.topTitle = [[UILabel alloc]init];
         _topTitle.bounds = CGRectMake(0, 0, 145, 60);
@@ -124,10 +127,10 @@
         _topTitle.text = @"将取景框对准二维码即可自动扫描";
         _topTitle.textColor = [UIColor whiteColor];
         [self.view addSubview:_topTitle];
-    }    
+    }
     
     
-      [_qRScanView startDeviceReadyingWithText:@"相机启动中"];
+    [_qRScanView startDeviceReadyingWithText:@"相机启动中"];
     
     
 }
@@ -140,7 +143,7 @@
     }
     
     self.bottomItemsView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.view.frame)-164,
-                                                                      CGRectGetWidth(self.view.frame), 100)];
+                                                                   CGRectGetWidth(self.view.frame), 100)];
     
     _bottomItemsView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     
@@ -150,7 +153,7 @@
     self.btnFlash = [[UIButton alloc]init];
     _btnFlash.bounds = CGRectMake(0, 0, size.width, size.height);
     _btnFlash.center = CGPointMake(CGRectGetWidth(_bottomItemsView.frame)/2, CGRectGetHeight(_bottomItemsView.frame)/2);
-     [_btnFlash setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_flash_nor"] forState:UIControlStateNormal];
+    [_btnFlash setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_flash_nor"] forState:UIControlStateNormal];
     [_btnFlash addTarget:self action:@selector(openOrCloseFlash) forControlEvents:UIControlEventTouchUpInside];
     
     self.btnPhoto = [[UIButton alloc]init];
@@ -169,7 +172,7 @@
     
     [_bottomItemsView addSubview:_btnFlash];
     [_bottomItemsView addSubview:_btnPhoto];
-    [_bottomItemsView addSubview:_btnMyQR];   
+    [_bottomItemsView addSubview:_btnMyQR];
     
 }
 
@@ -232,15 +235,13 @@
     
     [_qRScanView stopDeviceReadying];
     
-    [_qRScanView startScanAnimation];
-
     self.view.backgroundColor = [UIColor clearColor];
 }
 
 
 // 停止扫描
 -(void)stopScan{
-
+    
     [_scanObj stopScan];
     [_qRScanView stopScanAnimation];
 }
@@ -249,11 +250,11 @@
 - (void)scanResultWithArray:(NSArray<LBXScanResult*>*)array
 {
     
-
+    
     if (array.count < 1)
     {
         [self popAlertMsgWithScanResult:nil];
-     
+        
         return;
     }
     
@@ -276,11 +277,11 @@
         return;
     }
     
-
     
     
-
-
+    
+    
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [self beginRing];
@@ -333,12 +334,12 @@
         [_btnFlash setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_flash_down"] forState:UIControlStateNormal];
     }
     else
-    [_btnFlash setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_flash_nor"] forState:UIControlStateNormal];
+        [_btnFlash setImage:[UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_btn_flash_nor"] forState:UIControlStateNormal];
 }
 
 - (void)myQRCode
 {
-
+    
     
     NSString *qrCode = @"http://weixin.qq.com/r/DkOosGbE9DuLrSLT9xYc";
     
@@ -387,7 +388,7 @@
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     picker.delegate = self;
-   
+    
     
     picker.allowsEditing = YES;
     
@@ -401,7 +402,7 @@
 
 -(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];    
+    [picker dismissViewControllerAnimated:YES completion:nil];
     
     __block UIImage* image = [info objectForKey:UIImagePickerControllerEditedImage];
     
@@ -415,7 +416,7 @@
         [weakSelf scanResultWithArray:array];
     }];
     
-   
+    
     
     //系统自带识别方法
     /*

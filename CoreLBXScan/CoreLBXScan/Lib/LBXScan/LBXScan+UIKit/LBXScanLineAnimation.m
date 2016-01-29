@@ -34,7 +34,7 @@
         return;
     }
     
-   
+    
     CGFloat leftx = _animationRect.origin.x + 5;
     CGFloat width = _animationRect.size.width - 10;
     
@@ -47,9 +47,9 @@
     __weak __typeof(self) weakSelf = self;
     
     [UIView animateWithDuration:0.5 animations:^{
-         weakSelf.alpha = 1.0;
+        weakSelf.alpha = 1.0;
         
-     
+        
         
     } completion:^(BOOL finished)
      {
@@ -75,11 +75,11 @@
 
 - (void)startAnimatingWithRect:(CGRect)animationRect InView:(UIView *)parentView Image:(UIImage*)image
 {
-
-    [self stopAnimating];
+    if (isAnimationing) {
+        return;
+    }
     
     isAnimationing = YES;
-
     
     self.animationRect = animationRect;
     down = YES;
@@ -96,14 +96,14 @@
     
     [self startAnimating_UIViewAnimation];
     
-//    [self startAnimating_NSTimer];
+    //    [self startAnimating_NSTimer];
     
     
 }
 
 - (void)startAnimating_UIViewAnimation
 {
-     [self stepAnimation];
+    [self stepAnimation];
 }
 
 - (void)startAnimating_NSTimer
@@ -156,7 +156,7 @@
         
         [self removeFromSuperview];
     }
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];  
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 @end
